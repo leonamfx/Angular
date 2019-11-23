@@ -6,9 +6,37 @@ import { Subscriber, Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit { 
+  observable: Observable<string>;
+  nomes: Array<string> = [];  
+  
+  ngOnInit() {
+    this.observable = new Observable(subscriber => {
+      setInterval(() => {
+        subscriber.next(this.makeid(5));
+      }, 10000);
+    });
+    let lista: Array<string> = [];
+    this.observable.subscribe({
+      next(x) { lista.push(x); },
+      error(err) { alert('ocorreu um erro ' + err); }
+    });
+    this.nomes = lista;
+    
+    }
+
+    enviar(valor: string) {
+      this.nomes.push(valor);
+    }
+
+    makeid(lenght){
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234"
+      for (var i = 0; i < lenght; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      return text;
+    }
   title = 'ExercicioAngular'
-  nomes: string [] = ['joão', 'maria', 'josé','pedro','felipe','carlos'];
   nomesFiltro: string[];
   pessoas: any = [
     {id: 1, nome: 'joão', salario: 5000},
@@ -70,25 +98,5 @@ export class AppComponent {
   verificaSalario(valor:number){
     return this.pessoas.every(pessoa => pessoa.salario > valor);
   }
-  
-ngOnInit() {
-  const observable = new Observable(subscriber => {
-    subscriber.next(100);
-    subscriber.next(2);
-    subscriber.next(300);
-    setTimeout(() => {
-      subscriber.next(4);
-      subscriber.complete();
-    }, 1000);
 
-
-  });
-  console.log('Antes de executar subscribe');
-  observable.subscribe({
-    next(x) { console.log('recebeu o valor' + x);},
-    error(err) { console.error('Erro: ' + err); },
-    complete() { console.log('terminou o subscribe');}
-  });
-  console.log('ultima linha');
-  }
 }

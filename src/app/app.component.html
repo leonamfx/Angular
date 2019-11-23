@@ -27,3 +27,8 @@
 <ul *ngFor="let r of resposta">
   <li>{{r.id}} - {{r.nome}} - {{r.salario}}</li>
 </ul>
+<input placeholder="digite um nome" #campo>
+<button (click)="enviar(campo.value)">Enviar</button>
+<ul *ngFor = "let r of nomes">
+  <li>{{r}}</li>
+</ul>
