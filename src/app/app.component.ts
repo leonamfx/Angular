@@ -34,6 +34,11 @@ export class AppComponent {
     this.nomesFiltro = this.nomes.filter(function (nome) {
       return nome.toLowerCase().includes(valor.toLowerCase());
     })  
+
+    //método 4
+    this.nomesFiltro = this.nomes.filter(
+      (nome) => nome.toLowerCase().includes(valor.toLowerCase()));
+    
   }
 
 }
