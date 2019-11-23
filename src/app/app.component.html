@@ -12,3 +12,5 @@
     nome da pessoa é: {{nome}}, está na posição {{i + 1}}
   </li>
 </ul>
+<p *ngIf = "nomes.lenght == 0"> Nenhum nome encontrado, usando *ngIF</p>
+<p [hidden] = "nomes.lenght > 0" > Nenhum nome encontrado, usando hidden</p>
