@@ -23,3 +23,9 @@
 <input #parametroid placeholder="digite um id"/>
 <button (click) = "retorno = buscarId(parametroid.value)">Buscar id</button>
 <p *ngIf="retorno !=undefined">{{retorno.id}} - {{retorno.nome}}</p>
+<br>
+<input #percentual placeholder="digite o percentual"/>
+<button (click) = "aumentarSalario(percentual.value)">Aumentar Salario</button>
+<p> {{verificaSalario(500)?'Todo mundo ganha mais que 500':
+                           ' nem todo mundo ganha mais que 500'}}
+</p>

@@ -58,5 +58,11 @@ export class AppComponent {
   buscarId(id) {
     return this.pessoas.find(pessoa => pessoa.id ==id);
   }
-
+  aumentarSalario(percentual) {
+    this.pessoas.map(pessoa => 
+      pessoa.salario += pessoa.salario * percentual/100)
+  }
+  verificaSalario(valor:number){
+    return this.pessoas.every(pessoa => pessoa.salario > valor);
+  }
 }
