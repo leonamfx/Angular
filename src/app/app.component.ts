@@ -22,7 +22,11 @@ export class AppComponent {
       (soma,pessoa) => soma + pessoa.salario,0);
     
   }
-  
+  buscaCampos(criterio: string) {
+    return this.pessoas.filter((pessoa) =>
+            Object.keys(pessoa).some
+            (chave => pessoa[chave].toString().includes(criterio)));
+  }
   buscar(valor: string){
     this.nomesFiltro = [];
 
@@ -65,4 +69,5 @@ export class AppComponent {
   verificaSalario(valor:number){
     return this.pessoas.every(pessoa => pessoa.salario > valor);
   }
+  
 }
