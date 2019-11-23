@@ -19,7 +19,16 @@ export class AppComponent {
         this.nomesFiltro.push(this.nomes[i]);
       }
     }
-    
+
+    //método 2
+    let temp = [];
+    this.nomes.forEach(buscarItem);
+    function buscarItem(nome) {
+      if(nome.toLowerCase().includes(valor.toLowerCase())) {
+        temp.push(nome);
+      }
+    }
+    this.nomesFiltro = temp;
   }
 
 }
