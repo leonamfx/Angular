@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscriber, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -70,4 +71,24 @@ export class AppComponent {
     return this.pessoas.every(pessoa => pessoa.salario > valor);
   }
   
+ngOnInit() {
+  const observable = new Observable(subscriber => {
+    subscriber.next(100);
+    subscriber.next(2);
+    subscriber.next(300);
+    setTimeout(() => {
+      subscriber.next(4);
+      subscriber.complete();
+    }, 1000);
+
+
+  });
+  console.log('Antes de executar subscribe');
+  observable.subscribe({
+    next(x) { console.log('recebeu o valor' + x);},
+    error(err) { console.error('Erro: ' + err); },
+    complete() { console.log('terminou o subscribe');}
+  });
+  console.log('ultima linha');
+  }
 }
