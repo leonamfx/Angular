@@ -11,6 +11,7 @@
     nome da pessoa é: {{nome}}, está na posição {{i + 1}}
   </li>
 </ul>
+<p> Salario total: {{getValorTotal()}}</p>
 <p *ngIf = "nomes.lenght == 0"> Nenhum nome encontrado, usando *ngIF</p>
 <p [hidden] = "nomes.lenght > 0" > Nenhum nome encontrado, usando hidden</p>
 <input #box placeholder="digite um nome" (keyup) = "buscar(box.value)"/>
