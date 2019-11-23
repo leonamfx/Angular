@@ -22,6 +22,7 @@ export class AppComponent {
       (soma,pessoa) => soma + pessoa.salario,0);
     
   }
+  
   buscar(valor: string){
     this.nomesFiltro = [];
 
@@ -50,7 +51,12 @@ export class AppComponent {
     //método 4
     this.nomesFiltro = this.nomes.filter(
       (nome) => nome.toLowerCase().includes(valor.toLowerCase()));
+   
     
+  }
+
+  buscarId(id) {
+    return this.pessoas.find(pessoa => pessoa.id ==id);
   }
 
 }

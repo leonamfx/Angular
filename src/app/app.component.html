@@ -20,3 +20,6 @@
     {{nomeFiltro}}
   </li>
 </ul>
+<input #parametroid placeholder="digite um id"/>
+<button (click) = "retorno = buscarId(parametroid.value)">Buscar id</button>
+<p *ngIf="retorno !=undefined">{{retorno.id}} - {{retorno.nome}}</p>
