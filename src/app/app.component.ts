@@ -29,6 +29,11 @@ export class AppComponent {
       }
     }
     this.nomesFiltro = temp;
+
+    //método 3
+    this.nomesFiltro = this.nomes.filter(function (nome) {
+      return nome.toLowerCase().includes(valor.toLowerCase());
+    })  
   }
 
 }
